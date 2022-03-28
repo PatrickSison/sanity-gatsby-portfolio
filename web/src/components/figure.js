@@ -1,21 +1,21 @@
-import React from 'react'
-import Img from 'gatsby-image'
-import {getFluidGatsbyImage} from 'gatsby-source-sanity'
-import clientConfig from '../../client-config'
+import React from "react";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { getGatsbyImageData } from "gatsby-source-sanity";
+import clientConfig from "../../client-config";
 
-import styles from './figure.module.css'
+import * as styles from "./figure.module.css";
 
-export default ({node}) => {
+export default ({ node }) => {
   if (!node.asset) {
-    return null
+    return null;
   }
 
-  const fluidProps = getFluidGatsbyImage(node.asset._ref, {maxWidth: 675}, clientConfig.sanity)
+  const image = getGatsbyImageData(node, { maxWidth: 675 }, clientConfig.sanity);
 
   return (
     <figure className={styles.root}>
-      <Img fluid={fluidProps} alt={node.alt} />
+      <GatsbyImage image={image} alt={node.alt} />
       {node.caption && <figcaption>{node.caption}</figcaption>}
     </figure>
-  )
-}
+  );
+};
