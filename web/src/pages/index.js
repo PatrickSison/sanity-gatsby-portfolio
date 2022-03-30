@@ -10,6 +10,7 @@ import GraphQLErrorList from "../components/graphql-error-list";
 import ProjectPreviewGrid from "../components/project-preview-grid";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import MainBlurb from "../components/MainBlurb";
 
 export const query = graphql`
   query IndexPageQuery {
@@ -88,7 +89,7 @@ const IndexPage = (props) => {
       <SEO title={site.title} description={site.description} keywords={site.keywords} />
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
-        This is how we do it
+        <MainBlurb />
         {projectNodes && (
           <ProjectPreviewGrid
             title="Latest projects"
